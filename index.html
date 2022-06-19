@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>analogclock</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <main id="main" >
+        <div class="outer">
+        <div id="circle" class="circle">
+            <span class="no" style="--i:1;" >1</span>
+            <span class="no" style="--i:2;" >2</span>
+            <span class="no" style="--i:3;" >3</span>
+            <span class="no" style="--i:4;" >4</span>
+            <span class="no" style="--i:5;" >5</span>
+            <span class="no" style="--i:6;" >6</span>
+            <span class="no" style="--i:7;" >7</span>
+            <span class="no" style="--i:8;" >8</span>
+            <span class="no" style="--i:9;" >9</span>
+            <span class="no" style="--i:10;" >10</span>
+            <span class="no" style="--i:11;" >11</span>
+            <span class="no" style="--i:12;" >12</span>
+            <div class="m" id="m" ></div>
+            <div class="h" id="h" ></div>
+            <div class="s" id="s" ></div>
+        </div>
+             <div id="mode" class="mode">
+                <button id="light" class="light"><h3>light</h3></button>
+                <button id="dark"  class="dark" ><h3>dark</h3></button>
+             </div>
+        </div>
+    </main>
+    <script>
+        const circle=document.getElementById("circle")
+        const mode=document.getElementById("mode")
+        const main=document.getElementById("main")
+        const light=document.getElementById("light")
+        const dark=document.getElementById("dark")
+        const span=document.getElementsByClassName("no")
+        const m=document.getElementById("m")
+        const s=document.getElementById("s")
+        const h=document.getElementById("h")
+        console.log(circle)
+
+        const date=new Date()
+        const minute=date.getMinutes()
+        const second=date.getSeconds()
+        const hour=date.getHours()
+
+        const min=minute*6
+        const hr=hour*30+minute/2
+        const sec=second
+        console.log(light)
+
+
+        m.style.transform= `rotateZ(calc(${min}deg ))`
+        h.style.transform= `rotateZ(calc(${hr}deg))`
+        s.style.transform= `rotateZ(calc(${sec} * 6deg))`
+    
+        setInterval(()=>{
+            [...span].forEach(data=>{
+                data.classList.toggle("spanblink")
+            })
+        },1000)
+
+        function changetheme(){
+            light.classList.toggle("changelighttheme")
+            dark.classList.toggle("changedarktheme")
+            main.classList.toggle("mainlight")
+            circle.classList.toggle("circlelight")
+            mode.classList.toggle("modelight")
+        }
+
+        light.onclick=changetheme
+        dark.onclick =changetheme
+    </script>
+</body>
+</html>
