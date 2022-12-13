@@ -15,7 +15,7 @@ main
 
 .mainlight
 {
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 .outer
@@ -55,7 +55,7 @@ main
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 .circle span
